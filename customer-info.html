@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Customer Info | Holiday Rent-A-Car</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/customer-info.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <h3>MENU</h3>
+            <button class="close-btn" id="closeMenuBtn">&times;</button>
+        </div>
+        <ul>
+            <li><a href="showroom.html"><i class="fas fa-car"></i> Lineup</a></li>
+            <li><a href="#"><i class="fas fa-tags"></i> Rates</a></li>
+            <li><a href="#"><i class="fas fa-book-open"></i> Guide</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Shops</a></li>
+        </ul>
+    </nav>
+
+    <header class="site-header scrolled" id="siteHeader">
+        <div class="container header-container">
+            <div class="logo"><a href="index.html"><h1>HOLIDAY</h1></a></div>
+            <nav class="desktop-nav">
+                </nav>
+            <div class="mobile-menu-toggle" id="menuToggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="progress-wrapper">
+        <div class="progress-container">
+            <div class="progress-fill" style="width: 50%;"></div> 
+            
+            <div class="progress-step completed">
+                <div class="step-circle"><i class="fas fa-check"></i></div>
+                <div class="step-label">Plan</div>
+            </div>
+            <div class="progress-step active">
+                <div class="step-circle">2</div>
+                <div class="step-label">Info</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">3</div>
+                <div class="step-label">Confirm</div>
+            </div>
+        </div>
+    </div>
+
+    <main class="form-container">
+        <form id="customerForm">
+            <section class="form-section">
+                <div class="form-header"><i class="fas fa-id-card"></i> Driver Information</div>
+                <div class="form-group">
+                    <label class="required">Name (Alphabet / Passport Name)</label>
+                    <input type="text" name="name_en" placeholder="SMITH JOHN" required style="text-transform: uppercase;">
+                    <small style="color:#666; font-size:0.75rem;">Must match your passport exactly.</small>
+                </div>
+                <div class="flight-grid">
+                    <div class="form-group">
+                        <label class="required">Nationality</label>
+                        <select name="nationality" required>
+                            <option value="" disabled selected>Select Country</option>
+                            <option value="USA">United States</option>
+                            <option value="AUS">Australia</option>
+                            <option value="TWN">Taiwan</option>
+                            <option value="KOR">Korea</option>
+                            <option value="HKG">Hong Kong</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Mobile Phone</label>
+                        <input type="tel" name="phone" placeholder="+1 123 456 7890" inputmode="tel" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="required">Email Address</label>
+                    <input type="email" name="email" placeholder="example@email.com" inputmode="email" required>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <div class="form-header"><i class="fas fa-car-side"></i> License Eligibility</div>
+                <div style="margin-bottom:15px; font-size:0.9rem; color:var(--text-light);">
+                    To drive in Japan, you must hold one of the following valid licenses. <br>
+                </div>
+                <div class="license-options">
+                    <label class="license-card">
+                        <input type="radio" name="license_type" value="JP" required onchange="toggleLicense('JP')">
+                        <div>
+                            <strong>Japanese Driver's License</strong>
+                            <span class="license-desc">For residents of Japan.</span>
+                        </div>
+                    </label>
+                    <label class="license-card">
+                        <input type="radio" name="license_type" value="IDP" onchange="toggleLicense('IDP')">
+                        <div>
+                            <strong>Int'l Driving Permit (Geneva 1949)</strong>
+                            <span class="license-desc">1949 Convention only.</span>
+                        </div>
+                    </label>
+                    <label class="license-card">
+                        <input type="radio" name="license_type" value="JAF" onchange="toggleLicense('JAF')">
+                        <div>
+                            <strong>Foreign License + Official Translation</strong>
+                            <span class="license-desc">For: Switzerland, Germany, France, Belgium, Slovenia, Monaco, Taiwan.</span>
+                        </div>
+                    </label>
+                </div>
+                <div id="license-warning-idp" class="conditional-fields">
+                    <i class="fas fa-exclamation-circle" style="color:var(--accent);"></i> 
+                    <strong>Reminder:</strong> Bring Original License + IDP Booklet.
+                </div>
+                <div id="license-warning-jaf" class="conditional-fields">
+                    <i class="fas fa-exclamation-circle" style="color:var(--accent);"></i> 
+                    <strong>Reminder:</strong> Bring Original License + Translation Paper.
+                </div>
+            </section>
+
+            <section class="checklist-box">
+                <h4 style="margin-bottom:15px; color:var(--primary);">Confirm & Proceed</h4>
+                <label class="checklist-item">
+                    <input type="checkbox" id="chk_license" required onchange="checkFormValidity()">
+                    <span>I confirm I will bring my <strong>Original Passport</strong> and <strong>Valid License/IDP</strong>.</span>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox" id="chk_terms" required onchange="checkFormValidity()">
+                    <span>I agree to the Terms & Conditions.</span>
+                </label>
+            </section>
+
+            <button type="submit" id="submitBtn" class="btn-confirm" disabled>
+                Proceed to Payment <i class="fas fa-chevron-right"></i>
+            </button>
+
+        </form>
+    </main>
+
+    <script src="./js/index.js"></script>
+    <script>
+        // --- License Toggle ---
+        function toggleLicense(type) {
+            document.querySelectorAll('[id^="license-warning"]').forEach(el => el.classList.remove('active'));
+            if(type === 'IDP') document.getElementById('license-warning-idp').classList.add('active');
+            if(type === 'JAF') document.getElementById('license-warning-jaf').classList.add('active');
+        }
+
+        // --- Safety Check ---
+        function checkFormValidity() {
+            const chk1 = document.getElementById('chk_license').checked;
+            const chk2 = document.getElementById('chk_terms').checked;
+            document.getElementById('submitBtn').disabled = !(chk1 && chk2);
+        }
+
+        // --- Form Submission ---
+        document.getElementById('customerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, collect data here
+            alert("Reservation Info Saved!\nRedirecting to Payment...");
+            // window.location.href = 'payment.html'; 
+        });
+
+        function toggleLicense(type) {
+            document.querySelectorAll('[id^="license-warning"]').forEach(el => el.classList.remove('active'));
+            if(type === 'IDP') document.getElementById('license-warning-idp').classList.add('active');
+            if(type === 'JAF') document.getElementById('license-warning-jaf').classList.add('active');
+        }
+
+        // --- Safety Check ---
+        function checkFormValidity() {
+            const chk1 = document.getElementById('chk_license').checked;
+            const chk2 = document.getElementById('chk_terms').checked;
+            document.getElementById('submitBtn').disabled = !(chk1 && chk2);
+        }
+
+        // --- Form Submission & Integration ---
+        document.getElementById('customerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // 1. Capture the Name
+            const driverName = document.querySelector('input[name="name_en"]').value;
+            
+            // 2. Save to LocalStorage (Simulates passing data to next step)
+            localStorage.setItem('driverName', driverName);
+
+            // 3. Visual Feedback
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            // 4. Redirect to Payment Page
+            setTimeout(() => {
+                window.location.href = 'payment.html';
+            }, 800);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+body {
+    padding-bottom: 0;
+    background-color: var(--bg-light);
+}
+
+/* 1. PROGRESS INDICATOR */
+.progress-wrapper {
+    margin-top: 90px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.progress-container::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e0e0e0;
+    z-index: 1;
+}
+
+.progress-fill {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    height: 2px;
+    background: var(--primary);
+    z-index: 1;
+    transition: width 0.3s ease;
+}
+
+.progress-step {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background: var(--bg-light);
+    padding: 0 10px;
+}
+
+.step-circle {
+    width: 32px;
+    height: 32px;
+    background: var(--white);
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ccc;
+    transition: all 0.3s;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: #999;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Active/Completed States */
+.progress-step.active .step-circle {
+    border-color: var(--accent);
+    background: var(--primary);
+    color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.1);
+}
+
+.progress-step.active .step-label {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.progress-step.completed .step-circle {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+/* --- FORM STYLES --- */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 120px;
+}
+
+.form-section {
+    background: var(--white);
+    padding: 25px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    border-top: 3px solid var(--primary);
+}
+
+.form-header {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.required::after {
+    content: " *";
+    color: #d32f2f;
+}
+
+.optional::after {
+    content: " (Optional)";
+    color: #999;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    background: #fdfdfd;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    outline: none;
+    background: #fff;
+}
+
+/* License & Checkboxes */
+.license-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.license-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.license-card:hover {
+    background: #f9f9f9;
+    border-color: var(--primary);
+}
+
+.license-card input {
+    width: auto;
+    margin-top: 5px;
+    accent-color: var(--primary);
+}
+
+.license-desc {
+    font-size: 0.85rem;
+    color: #666;
+    display: block;
+    margin-top: 4px;
+}
+
+.flight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+@media (max-width: 600px) {
+    .flight-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.checklist-box {
+    background: #fffdf5;
+    border: 1px solid #eaddb6;
+    color: #5a4a25;
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 25px;
+}
+
+.checklist-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    align-items: flex-start;
+}
+
+.checklist-item input {
+    margin-top: 4px;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent);
+}
+
+/* --- 4. IMPROVED CONFIRM BUTTON STYLE --- */
+.btn-confirm {
+    width: 100%;
+    /* Gradient for premium feel */
+    background: linear-gradient(135deg, var(--accent) 0%, #d4af60 100%);
+    color: white;
+    padding: 18px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    /* Premium Shadow */
+    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(197, 160, 89, 0.5);
+    background: linear-gradient(135deg, #d4af60 0%, var(--accent) 100%);
+}
+
+.btn-confirm:active {
+    transform: translateY(0);
+}
+
+/* Disabled State */
+.btn-confirm:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    color: #eee;
+}
+
+/* Icon animation inside button */
+.btn-confirm i {
+    margin-left: 10px;
+    transition: margin-left 0.3s;
+}
+
+.btn-confirm:hover i {
+    margin-left: 15px;
+}
+
+.conditional-fields {
+    display: none;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: var(--radius-sm);
+    margin-top: 15px;
+    border-left: 3px solid var(--accent);
+}
+
+.conditional-fields.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

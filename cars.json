@@ -1,0 +1,185 @@
+{
+    "fronx" : {
+        "image": ["./photos/SUZUKI FRONX.png",
+                    "./photos/suzuki fronx1.jpeg",
+                    "./photos/suzuki fronx2.jpeg"
+                ],
+        "pricing": {
+            "OFF season": {
+                "same-day rates": 2500,
+                "2 days and 1 night": 4800,
+                "3 days and 2 nights": 7000,
+                "3 nights and 4 days": 9000,
+                "4 nights and 5 days": 11000
+            },
+            "Top season": {
+                "same-day rates": 3000,
+                "2 days and 1 night": 5800,
+                "3 days and 2 nights": 8500,
+                "3 nights and 4 days": 11000,
+                "4 nights and 5 days": 13000
+            }
+        },
+        "info": {
+            "Car Model": "Fronx",
+            "Body Color": "Metallic Silver",
+            "Commander/ Width/ Height": "1700/ 1765/ 1600 mm",
+            "Standard Equipment": [
+                "Air Conditioning",
+                "Power Steering",
+                "Anti-lock Braking System (ABS)",
+                "Dual Front Airbags",
+                "Touchscreen Infotainment System"
+            ],
+            "No Smoking/ Smoking": "No Smoking",
+            "Vehicle Type": "Compact SUV",
+            "Mission": "AT",
+            "Capacity(Persons)": "5",
+            "Fuel Type": "Petrol",
+            "Engine Displacement": "1197 cc",
+            "Safety Equipment": [
+                "Rear Parking Sensors",
+                "Electronic Stability Control",
+                "Hill Start Assist"
+            ]
+        }
+    },
+    "nissan": {
+        "image": ["./photos/Nissan Note.jpg",
+                    "./photos/nissan note1.jpeg",
+                    "./photos/nissan note2.jpeg"
+                ],
+
+        "pricing":{
+            "OFF season": {
+                "same-day rates": 2500,
+                "2 days and 1 night": 4800,
+                "3 days and 2 nights": 7000,
+                "3 nights and 4 days": 9000,
+                "4 nights and 5 days": 11000
+            },
+            "Top season": {
+                "same-day rates": 3000,
+                "2 days and 1 night": 5800,
+                "3 days and 2 nights": 8500,
+                "3 nights and 4 days": 11000,
+                "4 nights and 5 days": 13000
+            }
+        },
+        "info": {
+            "Car Model": "Nissan Note",
+            "Body Color": "Metallic Silver",
+            "Commander/ Width/ Height": "1700/ 1765/ 1600 mm",
+            "Standard Equipment": [
+                "Air Conditioning",
+                "Power Steering",
+                "Anti-lock Braking System (ABS)",
+                "Dual Front Airbags",
+                "Touchscreen Infotainment System"
+            ],
+            "No Smoking/ Smoking": "No Smoking",
+            "Vehicle Type": "Compact",
+            "Mission": "AT",
+            "Capacity(Persons)": "5",
+            "Fuel Type": "Petrol",
+            "Engine Displacement": "1197 cc",
+            "Safety Equipment": [
+                "Rear Parking Sensors",
+                "Electronic Stability Control",
+                "Hill Start Assist"
+            ]
+        }
+    },
+    "cruiser": {
+        "image": ["./photos/Land Cruiser ZX.jpg",
+                    "./photos/land cruiser1.jpeg",
+                    "./photos/land cruiser2.jpeg"
+                ],
+
+        "pricing":{
+            "OFF season": {
+                "same-day rates": 2500,
+                "2 days and 1 night": 4800,
+                "3 days and 2 nights": 7000,
+                "3 nights and 4 days": 9000,
+                "4 nights and 5 days": 11000
+            },
+            "Top season": {
+                "same-day rates": 3000,
+                "2 days and 1 night": 5800,
+                "3 days and 2 nights": 8500,
+                "3 nights and 4 days": 11000,
+                "4 nights and 5 days": 13000
+            }
+        },
+        "info": {
+            "Car Model": "Land Cruiser",
+            "Body Color": "Metallic Silver",
+            "Commander/ Width/ Height": "1700/ 1765/ 1600 mm",
+            "Standard Equipment": [
+                "Air Conditioning",
+                "Power Steering",
+                "Anti-lock Braking System (ABS)",
+                "Dual Front Airbags",
+                "Touchscreen Infotainment System"
+            ],
+            "No Smoking/ Smoking": "No Smoking",
+            "Vehicle Type": "SUV",
+            "Mission": "AT",
+            "Capacity(Persons)": "7",
+            "Fuel Type": "Hioku",
+            "Engine Displacement": "1197 cc",
+            "Safety Equipment": [
+                "Rear Parking Sensors",
+                "Electronic Stability Control",
+                "Hill Start Assist"
+            ]
+        }
+    },
+    "honda":{
+        "image": ["./photos/HONDA Vezel.jpg",
+                    "./photos/honda vezel1.jpeg",
+                    "./photos/honda vezel2.jpeg"
+                ],
+
+        "pricing":{
+            "OFF season": {
+                "same-day rates": 2500,
+                "2 days and 1 night": 4800,
+                "3 days and 2 nights": 7000,
+                "3 nights and 4 days": 9000,
+                "4 nights and 5 days": 11000
+            },
+            "Top season": {
+                "same-day rates": 3000,
+                "2 days and 1 night": 5800,
+                "3 days and 2 nights": 8500,
+                "3 nights and 4 days": 11000,
+                "4 nights and 5 days": 13000
+            }
+        },
+        "info": {
+            "Car Model": "HONDA Vezel",
+            "Body Color": "Metallic Silver",
+            "Commander/ Width/ Height": "1700/ 1765/ 1600 mm",
+            "Standard Equipment": [
+                "Air Conditioning",
+                "Power Steering",
+                "Anti-lock Braking System (ABS)",
+                "Dual Front Airbags",
+                "Touchscreen Infotainment System"
+            ],
+            "No Smoking/ Smoking": "No Smoking",
+            "Vehicle Type": "Compact SUV",
+            "Mission": "AT",
+            "Capacity(Persons)": "5",
+            "Fuel Type": "Hioku",
+            "Engine Displacement": "1197 cc",
+            "Safety Equipment": [
+                "Rear Parking Sensors",
+                "Electronic Stability Control",
+                "Hill Start Assist"
+            ]
+        }
+    }
+}

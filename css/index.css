@@ -1,0 +1,904 @@
+/* =========================================
+   1. CONFIGURATION & VARIABLES (PREMIUM PALETTE)
+   ========================================= */
+:root {
+    /* --- Premium Japanese Palette --- */
+    /* Deep Indigo (Trust/Luxury) */
+    --primary: #1A2B4C;
+    /* Muted Champagne Gold (Accent) */
+    --accent: #C5A059;
+    /* Dark Charcoal (Softer than black) */
+    --text-dark: #2C2C2C;
+    /* Cool Grey */
+    --text-light: #6E6E73;
+    /* Warm White/Eggshell */
+    --bg-light: #FAFAFA;
+    --bg-dark: #111111;
+    --card-bg: rgba(255, 255, 255, 0.98);
+    --white: #ffffff;
+
+    /* --- Dimensions --- */
+    --header-height: 70px;
+    --radius-sm: 2px;
+    /* Sharper corners for luxury feel */
+    --radius-md: 6px;
+    --radius-lg: 12px;
+
+    /* --- Z-Index --- */
+    --z-back: -1;
+    --z-normal: 1;
+    --z-hero-content: 2;
+    --z-sticky: 10;
+    --z-header: 100;
+    --z-overlay: 1500;
+    --z-drawer: 2000;
+}
+
+/* =========================================
+   2. RESET & BASE STYLES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    /* Font stack: Prioritizing Mincho for headings in future, Gothic for body */
+    font-family: "Helvetica Neue", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    /* BUG FIX 1: Removed padding-bottom that was creating white space */
+    padding-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* =========================================
+   3. COMPONENT: HEADER
+   ========================================= */
+.site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: var(--z-header);
+    transition: all 0.4s ease;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+}
+
+.site-header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: var(--header-height);
+}
+
+/* Logo */
+.logo h1 {
+    font-family: 'Times New Roman', serif;
+    /* Serif for Premium look */
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+.site-header.scrolled .logo h1 {
+    color: var(--primary);
+}
+
+/* Mobile Menu Toggle */
+.desktop-nav {
+    display: none;
+}
+
+.mobile-menu-toggle {
+    width: 30px;
+    height: 14px;
+    /* Thinner profile */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.bar {
+    width: 100%;
+    height: 1px;
+    /* Thinner lines for elegance */
+    background: var(--white);
+    transition: background 0.3s;
+}
+
+.site-header.scrolled .bar {
+    background: var(--text-dark);
+}
+
+/* =========================================
+   4. COMPONENT: HERO SECTION (Refactored)
+   ========================================= */
+.hero-section {
+    position: relative;
+    /* Changed from strict 85vh to min-height to allow content flow */
+    min-height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* Center content vertically */
+    justify-content: center;
+    padding-bottom: 80px;
+    /* Space for the search card overlap */
+    background: #000;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Darker overlay for better text contrast */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url("../photos/background-image/index-background-image.jpg") center/cover;
+    background-attachment: fixed;
+    /* Parallax feel */
+}
+
+.hero-content {
+    position: relative;
+    z-index: var(--z-hero-content);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin-top: -60px;
+    /* Lift text up slightly */
+}
+
+.tagline {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.hero-content h2 {
+    font-size: 2.8rem;
+    /* Larger */
+    margin-bottom: 15px;
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.hero-content p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   5. COMPONENT: SEARCH WIDGET (Bug Fix 2)
+   ========================================= */
+.search-card-container {
+    /* FIX: Changed from absolute to relative with negative margin */
+    /* This allows the container to have height and not cut off on mobile */
+    position: relative;
+    z-index: var(--z-sticky);
+    margin-top: -60px;
+    /* Pulls it up into the hero */
+    margin-bottom: 40px;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-sm);
+    /* Sharper corners */
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-top: 3px solid var(--accent);
+    /* Gold accent line */
+}
+
+.search-header {
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Form Inputs */
+.input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* BUG FIX 2: Stack inputs on very small screens */
+@media (max-width: 480px) {
+    .input-row {
+        flex-direction: column;
+    }
+
+    .arrow-divider {
+        transform: rotate(90deg);
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+}
+
+.input-group {
+    flex: 1;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    /* Clean underline style */
+    padding: 5px 0;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.input-group input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-dark);
+    outline: none;
+    font-family: inherit;
+    padding: 5px 0;
+}
+
+.arrow-divider {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+/* Search Button */
+.search-btn {
+    width: 100%;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 18px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+}
+
+.search-btn:hover {
+    background: #12203a;
+}
+
+/* =========================================
+   6. CONCEPT SECTION (New for Requirement 3)
+   ========================================= */
+.concept-section {
+    padding: 60px 20px;
+    background-color: var(--white);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.concept-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Elegant underline */
+.concept-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 10px auto 0;
+}
+
+.concept-text {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 2;
+    /* Relaxed reading */
+    text-align: justify;
+    text-align-last: center;
+    /* Center the last line */
+}
+
+/* =========================================
+   7. CAR CARDS & LIST
+   ========================================= */
+.popular-car-section {
+    padding: 40px 20px;
+    background: var(--bg-light);
+}
+
+.car-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.car-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.car-label {
+    background: var(--white);
+    /* White bottom instead of gradient overlay */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.car-label span {
+    color: var(--text-dark);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.arrow-icon {
+    color: var(--accent);
+}
+
+/* "All Cars" Button Area */
+#car-search-div {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    background: var(--bg-light);
+}
+
+#car-search-btn {
+    padding: 15px 50px;
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0;
+    /* Square button */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    width: auto;
+    /* Allow auto width */
+    height: auto;
+}
+
+#car-search-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/* =========================================
+   8. FOOTER (Fixed Whitespace)
+   ========================================= */
+#footer {
+    background-color: #0f1a2e;
+    /* Darker Navy */
+    color: var(--white);
+    padding: 80px 20px 40px;
+    text-align: center;
+    margin-top: 0;
+    /* Ensure no margin pushes it down */
+}
+
+.footer-logo {
+    max-width: 120px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+#footer-menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+#footer-menu li a {
+    color: #889bb0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#footer-menu li a:hover {
+    color: var(--accent);
+}
+
+#copyright-style {
+    font-size: 0.7rem;
+    color: #4a5b70;
+}
+
+/* =========================================
+   9. MOBILE DRAWER
+   ========================================= */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: var(--z-overlay);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    background: var(--white);
+    z-index: var(--z-drawer);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.mobile-drawer.open {
+    transform: translateX(0);
+}
+
+.drawer-header {
+    padding: 30px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drawer-header h3 {
+    color: var(--primary);
+    letter-spacing: 2px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+.mobile-drawer ul {
+    padding: 30px;
+}
+
+.mobile-drawer li {
+    margin-bottom: 30px;
+}
+
+.mobile-drawer a {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.mobile-drawer i {
+    color: var(--accent);
+    margin-right: 15px;
+    width: 20px;
+}
+
+/* Return to top */
+#return_top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    /* Adjusted since we removed body padding */
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+#return_top a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#return_top span {
+    display: none;
+}
+
+/* =========================================
+   FIX: RESERVATION PAGE STYLES
+   ========================================= */
+
+/* Fix 1: Step Indicators (Arrows) */
+.step-item {
+    background: #e0e0e0;
+    color: #777;
+    margin-right: 5px;
+    /* Spacing for the arrow effect */
+    /* Ensure the arrow sits on top */
+    z-index: 1;
+}
+
+.step-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    /* Adjust based on border width */
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 20px solid #e0e0e0;
+    /* Default Gray */
+    z-index: 2;
+}
+
+.step-item.active {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.step-item.active::after {
+    border-left-color: var(--primary);
+    /* Blue arrow tip */
+}
+
+/* Fix 2: Image Thumbnails */
+.thumb-slider {
+    padding: 10px 0;
+    /* Give space for focus borders */
+}
+
+.thumb-item {
+    min-width: 100px;
+    /* Wider to prevent squashing */
+    height: 70px;
+    /* Fixed height */
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    opacity: 0.6;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+    /* Prevent flex from shrinking them */
+}
+
+.thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover looks premium, Contain sees full car */
+}
+
+.thumb-item.selected {
+    opacity: 1;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    /* Visual lift */
+}
+
+/* Fix 3: Reservation Header Override 
+   Forces text to stay white even if 'scrolled' class is added */
+.header-dark-mode .logo h1 {
+    color: var(--white) !important;
+}
+
+/* =========================================
+   NEW: SHOWROOM PAGINATION STYLES
+   ========================================= */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0 80px 0;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    background: var(--white);
+    color: var(--primary);
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.page-btn:hover {
+    background: #eee;
+}
+
+.page-btn.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* Showroom Grid Gap Fix */
+.showroom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   JAPANESE HIGH-CONTEXT CAR CARD
+   ========================================= */
+
+/* The Grid Layout */
+.popular-car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    /* Tighter gap for density */
+    padding: 20px 0;
+}
+
+/* The Card Container */
+.jp-card {
+    background: var(--white);
+    border: 1px solid #ddd;
+    /* Japanese sites prefer defined borders over soft shadows */
+    border-radius: 4px;
+    /* Smaller radius looks more professional/commercial */
+    overflow: hidden;
+    transition: all 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.jp-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 1. HEADER: Name Above Image */
+.jp-card-header {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.jp-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+.jp-card-badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    background: #f0f0f0;
+    color: #666;
+    border-radius: 2px;
+}
+
+/* 2. IMAGE: Edge-to-Edge */
+.jp-card-img {
+    width: 100%;
+    height: 180px;
+    /* Fixed height for uniformity */
+    position: relative;
+}
+
+.jp-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures photo fills space */
+    display: block;
+}
+
+/* Overlay Tag (Common in Japan) */
+.jp-tag-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(26, 43, 76, 0.8);
+    /* Brand Blue */
+    color: white;
+    font-size: 0.8rem;
+    padding: 3px 10px;
+}
+
+/* 3. INFO DENSITY (High Context) */
+.jp-card-specs {
+    padding: 10px 15px;
+    display: flex;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #555;
+    background: #f9f9f9;
+    border-bottom: 1px solid #eee;
+}
+
+.jp-spec-item i {
+    color: #999;
+    margin-right: 4px;
+}
+
+/* 4. PRICE & ACTION */
+.jp-card-footer {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.jp-price-label {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 2px;
+}
+
+.jp-price-val {
+    color: #d32f2f;
+    /* Red for price (Standard in Japan) */
+    font-weight: 700;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    /* Clean number font */
+}
+
+.jp-price-unit {
+    font-size: 0.9rem;
+    color: #d32f2f;
+}
+
+.jp-btn-detail {
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+/* Add to style.css */
+
+.section-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 2rem;
+    color: var(--primary);
+    /* Deep Indigo */
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+/* Optional: The Gold Underline effect */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
+    /* Gold */
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.5rem;
+        margin-top: 40px;
+    }
+}

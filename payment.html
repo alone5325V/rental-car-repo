@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Payment | Holiday Rent-A-Car</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+    <header class="site-header scrolled" id="siteHeader">
+        <div class="container header-container">
+            <div class="logo"><a href="index.html"><h1>HOLIDAY</h1></a></div>
+            <div class="secure-badge"><i class="fas fa-lock"></i> Secure Checkout</div>
+        </div>
+    </header>
+
+    <div class="progress-wrapper">
+        <div class="progress-container">
+            <div class="progress-fill" style="width: 100%;"></div> 
+            <div class="progress-step completed"><div class="step-circle"><i class="fas fa-check"></i></div></div>
+            <div class="progress-step completed"><div class="step-circle"><i class="fas fa-check"></i></div></div>
+            <div class="progress-step active">
+                <div class="step-circle">3</div>
+                <div class="step-label">Payment</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="payment-layout">
+        
+        <section class="payment-method-section">
+            <h2 class="section-heading">Select Payment Method</h2>
+            
+            <div class="payment-tabs">
+                <button class="tab-btn active" data-target="credit-card">
+                    <i class="fas fa-credit-card"></i> Credit Card
+                </button>
+                <button class="tab-btn" data-target="paypay">
+                    <span class="paypay-icon">P</span> PayPay
+                </button>
+                <button class="tab-btn" data-target="konbini">
+                    <i class="fas fa-store"></i> Konbini
+                </button>
+            </div>
+
+            <div class="payment-content">
+                
+                <div id="credit-card" class="tab-content active">
+                    <div class="card-logos">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-jcb"></i>
+                        <i class="fab fa-cc-amex"></i>
+                    </div>
+                    
+                    <form id="payment-form">
+                        <div class="form-row">
+                            <label>Card Information</label>
+                            <div id="card-element" class="stripe-input"></div>
+                            <div id="card-errors" role="alert"></div>
+                        </div>
+                        <div class="form-row">
+    <label>Cardholder Name</label>
+    <input type="text" id="cardholder-name" placeholder="TARO YAMADA" class="stripe-input-mock" required>
+</div>
+                        
+                        <div class="info-note">
+                            <i class="fas fa-shield-alt"></i> 
+                            Transactions are encrypted and secured by Stripe Japan.
+                        </div>
+                    </form>
+                </div>
+
+                <div id="paypay" class="tab-content">
+                    <div class="paypay-box">
+                        <div class="qr-placeholder">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/QR_Code_Example.svg" alt="PayPay QR">
+                        </div>
+                        <p>Scan with PayPay App to pay.</p>
+                        <small>You will be redirected to the PayPay app to complete the transaction.</small>
+                    </div>
+                </div>
+
+                <div id="konbini" class="tab-content">
+                    <div class="konbini-logos">
+                        <span>7-Eleven</span>
+                        <span>Lawson</span>
+                        <span>FamilyMart</span>
+                    </div>
+                    <p class="konbini-text">
+                        A payment code will be issued. Please pay at any convenience store within <strong>24 hours</strong> to confirm your booking.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <aside class="order-summary">
+            <div class="summary-card">
+                <h3>Reservation Summary</h3>
+                
+                <div class="car-preview">
+                    <img src="./photos/SUZUKI FRONX.png" alt="Selected Car">
+                    <div class="car-name">Suzuki Fronx</div>
+                    <div class="car-badge">Compact SUV</div>
+                </div>
+
+                <div class="details-list">
+                    <div class="detail-row">
+                        <span>Pick-up</span>
+                        <strong>2026/02/10 10:00</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Return</span>
+                        <strong>2026/02/12 10:00</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span>Options</span>
+                        <span>NOC Insurance</span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="total-row">
+                    <span>Total Amount</span>
+                    <span class="price-jp">¥25,300</span>
+                </div>
+
+                <button id="pay-button" class="pay-now-btn">
+                    PAY JPY 25,300
+                </button>
+                <div class="cancel-policy">
+                    Cancellation is free until 48 hours before pickup.
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="js/index.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>

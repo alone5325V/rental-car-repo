@@ -1,0 +1,281 @@
+/* Page-Specific Styles (kept separate as requested) */
+.car-detail-wrapper {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 80vh;
+}
+
+.detail-hero {
+    width: 100%;
+    height: auto;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.detail-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.car-title-block {
+    padding: 0 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.car-title-block h2 {
+    font-family: 'Times New Roman', serif;
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.tag-pill {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--text-dark);
+    padding: 6px 18px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.data-section {
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+.section-heading {
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--primary);
+    font-family: serif;
+}
+
+.table-scroll-container {
+    overflow-x: auto;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    background: var(--white);
+    border: 1px solid #eee;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th,
+td {
+    padding: 18px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.pricing-table th {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.price-val {
+    font-weight: 500;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.key-col {
+    width: 30%;
+    background: #fafafa;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.equip-badge {
+    background: #f0f2f5;
+    color: #444;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Loading State */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-light);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    font-family: serif;
+    font-size: 1.2rem;
+}
+
+/* --- NEW: Reservation Button Style --- */
+.reservation-action-area {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-top: 1px solid #eee;
+}
+
+.btn-reserve-main {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 18px 60px;
+    border-radius: 2px;
+    /* Premium Sharp Look */
+    letter-spacing: 1px;
+    box-shadow: 0 10px 20px rgba(26, 43, 76, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-reserve-main:hover {
+    transform: translateY(-3px);
+    background-color: var(--accent);
+    /* Changes to Gold on hover */
+    color: var(--text-dark);
+    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3);
+}
+
+/* =========================================
+   MOBILE OPTIMIZATION (Japanese Premium Style)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. RESET THE CONTAINER
+       Remove the scroll box for the Info section so it fits the screen width naturally.
+    */
+    #info-section .table-scroll-container {
+        overflow-x: visible;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+
+    #info-section table {
+        min-width: 100%; /* Allow table to shrink to mobile width */
+        display: block;  /* Switch to block layout */
+    }
+
+    #info-section tbody, 
+    #info-section tr, 
+    #info-section td {
+        display: block; /* Make every element stack vertically */
+        width: 100%;
+    }
+
+    /* 2. CARD STYLE ROWS
+       Turn each table row into a distinct "Card" or "Block"
+    */
+    #info-section .info-table tr {
+        margin-bottom: 20px;
+        background: var(--white);
+        border: 1px solid #ddd;
+        border-radius: var(--radius-sm); /* Sharp corners for premium feel */
+        overflow: hidden; /* Keeps the borders clean */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle depth */
+    }
+
+    /* 3. STYLING THE "KEY" (Label)
+       Make it look like a header for that specific block.
+    */
+    #info-section .info-table .key-col {
+        width: 100%;
+        background-color: var(--primary); /* Deep Indigo */
+        color: var(--white);
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        position: relative;
+    }
+
+    /* Add a Gold Accent mark to the left of the header */
+    #info-section .info-table .key-col::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 4px;
+        height: 100%;
+        background-color: var(--accent); /* Champagne Gold */
+    }
+
+    /* 4. STYLING THE "VALUE" (Content)
+       Clean, spacious area for the details.
+    */
+    #info-section .info-table td:not(.key-col) {
+        padding: 15px;
+        font-size: 1rem;
+        color: var(--text-dark);
+        background: var(--white);
+        border-bottom: none;
+        line-height: 1.6;
+    }
+
+    /* 5. PRICING TABLE ADJUSTMENT
+       Keep horizontal scroll for Pricing (it's needed for comparison),
+       but add a visual hint that it is scrollable.
+    */
+    .pricing-table {
+        /* Keep table layout for pricing */
+        min-width: 600px; 
+    }
+    
+    /* Scroll Hint */
+    section.data-section:first-of-type .table-scroll-container::after {
+        content: 'Scroll \2192';
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 0.7rem;
+        color: var(--accent);
+        background: rgba(255,255,255,0.9);
+        padding: 2px 6px;
+        border: 1px solid var(--accent);
+        pointer-events: none;
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Reserve | Holiday Rent-A-Car</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/reservation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <h3>MENU</h3>
+            <button class="close-btn" id="closeMenuBtn">&times;</button>
+        </div>
+        <ul>
+            <li><a href="showroom.html"><i class="fas fa-car"></i> Lineup</a></li>
+            <li><a href="#"><i class="fas fa-tags"></i> Rates</a></li>
+            <li><a href="#"><i class="fas fa-book-open"></i> Guide</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Shops</a></li>
+        </ul>
+    </nav>
+
+    <header class="site-header scrolled" id="siteHeader">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html"><h1>HOLIDAY</h1></a>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="showroom.html" style="color:var(--primary)">Back to Showroom</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle" id="menuToggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="progress-wrapper">
+        <div class="progress-container">
+            <div class="progress-fill" style="width: 0%;"></div> 
+            
+            <div class="progress-step active">
+                <div class="step-circle">1</div>
+                <div class="step-label">Plan</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">2</div>
+                <div class="step-label">Info</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle">3</div>
+                <div class="step-label">Confirm</div>
+            </div>
+        </div>
+    </div>
+
+    <main class="config-container">
+        
+        <div class="car-info-header">
+            <h2 id="res-car-model">Loading...</h2>
+            <div class="gallery-section">
+                <div class="main-img-wrapper">
+                    <img id="res-main-img" src="" alt="Selected Car">
+                </div>
+                <div class="thumb-slider" id="thumb-slider">
+                    </div>
+            </div>
+            <p id="res-car-desc" class="car-desc-text"></p>
+        </div>
+
+        <section class="date-card">
+            <h4 style="margin-bottom:15px; color:var(--primary); font-family:'Times New Roman', serif;"> Rental Schedule</h4>
+            <div class="date-row">
+                <div class="date-group">
+                    <label>Pickup (出発)</label>
+                    <input type="datetime-local" id="res-pickup">
+                </div>
+                <div class="date-group">
+                    <label>Return (返却)</label>
+                    <input type="datetime-local" id="res-return">
+                </div>
+            </div>
+        </section>
+
+        <section class="insurance-box">
+            <h4 style="margin-bottom:10px; color:var(--text-dark);"><i class="fas fa-shield-alt" style="color:var(--accent)"></i> Insurance & Support</h4>
+            <p style="font-size:0.85rem; color:#666;">
+                <strong>Premium Safety Package</strong> included. <br>
+                Full collision coverage and 24/7 Roadside Assistance.
+            </p>
+        </section>
+
+        <h4 style="margin-bottom:10px; color:var(--primary);">Vehicle Specifications</h4>
+        <table class="spec-table">
+            <tbody id="res-spec-body"></tbody>
+        </table>
+
+        <div style="background:#fff5f5; padding:15px; border-radius:4px; border:1px solid #ffcccc; margin-bottom:30px;">
+            <h5 style="color:#d32f2f; margin-bottom:5px;"><i class="fas fa-exclamation-circle"></i> Important Rules</h5>
+            <ul id="res-rules-list" style="padding-left:20px; font-size:0.85rem; color:#444;"></ul>
+        </div>
+
+        <section class="policy-block">
+            <div class="policy-item">
+                <div class="policy-title"><i class="fas fa-credit-card"></i> Payment Method</div>
+                <div class="policy-content">Credit Card Only (Visa, Mastercard, Amex, JCB). Payment is processed securely online in the next step.</div>
+            </div>
+            <div class="policy-item">
+                <div class="policy-title"><i class="fas fa-gas-pump"></i> Fuel Policy</div>
+                <div class="policy-content">Full-to-Full. Vehicle provided with a full tank and must be returned full.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="sticky-footer">
+        <div class="price-display">
+            <span class="price-label">Estimated Total</span>
+            <span class="total-price" id="footer-price">¥---</span>
+        </div>
+        <button class="btn-proceed" id="btn-next-step">
+            Proceed <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const carId = params.get('id');
+            const pickupEl = document.getElementById('res-pickup');
+            const returnEl = document.getElementById('res-return');
+            const priceEl = document.getElementById('footer-price');
+
+            // Default Time
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            pickupEl.value = now.toISOString().slice(0,16);
+            
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            returnEl.value = tomorrow.toISOString().slice(0,16);
+
+            // Fetch Data
+            fetch('cars.json')
+            .then(res => res.json())
+            .then(data => {
+                const car = data[carId];
+                if(!car) { 
+                    alert('Car not found, redirecting to showroom.'); 
+                    window.location.href='showroom.html'; 
+                    return; 
+                }
+
+                // Populate Data
+                document.getElementById('res-car-model').textContent = car.info["Car Model"];
+                const images = Array.isArray(car.image) ? car.image : [car.image];
+                const mainImgElement = document.getElementById('res-main-img');
+                const slider = document.getElementById('thumb-slider');
+
+                if (images.length > 0) mainImgElement.src = images[0];
+
+                slider.innerHTML = '';
+                images.forEach((imgSrc, index) => {
+                    const thumbDiv = document.createElement('div');
+                    thumbDiv.className = 'thumb-item' + (index === 0 ? ' selected' : '');
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    thumbDiv.appendChild(img);
+                    thumbDiv.addEventListener('click', () => {
+                        mainImgElement.src = imgSrc;
+                        document.querySelectorAll('.thumb-item').forEach(item => item.classList.remove('selected'));
+                        thumbDiv.classList.add('selected');
+                    });
+                    slider.appendChild(thumbDiv);
+                });
+
+                document.getElementById('res-car-desc').textContent = car.description || "Premium vehicle selection.";
+
+                const tbody = document.getElementById('res-spec-body');
+                tbody.innerHTML = ''; // Clear previous
+                let equipRow = "";
+                for(const [k, v] of Object.entries(car.info)) {
+                    if(k === "Standard Equipment" && Array.isArray(v)) {
+                        const tags = v.map(item => `<span class="equip-tag">${item}</span>`).join(' ');
+                        equipRow = `<tr><th>Equipment</th><td>${tags}</td></tr>`;
+                    } else if (k !== "Car Model") {
+                        tbody.innerHTML += `<tr><th>${k}</th><td>${v}</td></tr>`;
+                    }
+                }
+                tbody.innerHTML += equipRow;
+
+                const rulesList = document.getElementById('res-rules-list');
+                const rules = car.rules || ["No Smoking", "No Pets", "Return Clean"];
+                rulesList.innerHTML = '';
+                if(Array.isArray(rules)) {
+                    rules.forEach(r => rulesList.innerHTML += `<li>${r}</li>`);
+                } else {
+                     rulesList.innerHTML += `<li>${rules}</li>`;
+                }
+
+                calculatePrice(car.pricing);
+            });
+
+            // Update Price on Change
+            pickupEl.addEventListener('change', () => calculatePrice(null));
+            returnEl.addEventListener('change', () => calculatePrice(null));
+
+            function calculatePrice(pricingData) {
+                const d1 = new Date(pickupEl.value);
+                const d2 = new Date(returnEl.value);
+                const diffTime = Math.abs(d2 - d1);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                const baseRate = 5000; // Mock rate
+                const total = (baseRate * diffDays) * 1.1;
+                
+                if(!isNaN(total) && total > 0) {
+                    priceEl.textContent = "¥" + Math.floor(total).toLocaleString();
+                } else {
+                    priceEl.textContent = "---";
+                }
+            }
+
+            // --- 3. LINKING TO NEXT PAGE ---
+            document.getElementById('btn-next-step').addEventListener('click', () => {
+                // Pass car ID via URL to next page if needed
+                window.location.href = `customer-info.html?id=${carId}`;
+            });
+        });
+    </script>
+</body>
+</html>

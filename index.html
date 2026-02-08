@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Holiday Rent-A-Car | Premium Okinawa Experience</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <h3>MENU</h3>
+            <button class="close-btn" id="closeMenuBtn">&times;</button>
+        </div>
+        <ul>
+            <li><a href="showroom.html"><i class="fas fa-car"></i> 車種一覧 (Lineup)</a></li>
+            <li><a href="#"><i class="fas fa-tags"></i> 料金プラン (Rates)</a></li>
+            <li><a href="#"><i class="fas fa-book-open"></i> ご利用ガイド (Guide)</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> 店舗情報 (Shops)</a></li>
+        </ul>
+        <div class="drawer-footer">
+        </div>
+    </nav>
+
+    <header class="site-header" id="siteHeader">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>HOLIDAY</h1>
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="showroom.html">Lineup</a></li>
+                    <li><a href="reservation.html">Reserve</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle" id="menuToggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="tagline">Okinawa Private Life</span>
+            <h2>心に残る、<br>最高のドライブを。</h2>
+            <p>Premium Car Rental Experience</p>
+        </div>
+    </section>
+
+    <div class="search-card-container">
+        <div class="search-card">
+            <div class="search-header">
+                <i class="fas fa-calendar-alt"></i> Reservation
+            </div>
+            <form id="bookingForm">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Pick-up (出発)</label>
+                        <input type="datetime-local" id="pickup-date" required>
+                    </div>
+                    <div class="arrow-divider"><i class="fas fa-arrow-right"></i></div>
+                    <div class="input-group">
+                        <label>Return (返却)</label>
+                        <input type="datetime-local" id="return-date" required>
+                    </div>
+                </div>
+                <button type="submit" class="search-btn">
+                    SEARCH AVAILABILITY
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <p class="section-title">Popular Cars</p>
+    <section class="popular-car-section">
+        <div class="car-container">
+            <a href="car-details.html?id=fronx" class="car-card">
+                <div class="image-wrapper">
+                    <img src="./photos/SUZUKI FRONX.png" alt="Suzuki Fronx">
+                </div>
+                <div class="car-label">
+                    <span>SUZUKI FRONX</span>
+                    <i class="arrow-icon fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <a href="car-details.html?id=nissan" class="car-card">
+                <div class="image-wrapper">
+                    <img src="./photos/Nissan Note.jpg" alt="Nissan Note">
+                </div>
+                <div class="car-label">
+                    <span>Nissan Note</span>
+                    <i class="arrow-icon fas fa-chevron-right"></i>
+                </div>
+            </a>
+            
+            <a href="car-details.html?id=cruiser" class="car-card">
+                <div class="image-wrapper">
+                    <img src="./photos/Land Cruiser ZX.jpg" alt="Land Cruiser ZX">
+                </div>
+                <div class="car-label">
+                    <span>Land Cruiser ZX</span>
+                    <i class="arrow-icon fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+             <a href="car-details.html?id=honda" class="car-card">
+                <div class="image-wrapper">
+                    <img src="./photos/HONDA Vezel.jpg" alt="Honda Vezel">
+                </div>
+                <div class="car-label">
+                    <span>Honda Vezel</span>
+                    <i class="arrow-icon fas fa-chevron-right"></i>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <div id="car-search-div">
+        <button type="button" id="car-search-btn">VIEW ALL CARS</button>
+    </div>
+
+    <section class="concept-section">
+        <h3 class="concept-title">Escape the Ordinary</h3>
+        <p class="concept-text">
+            Okinawa is a subtropical resort that consistently ranks as a top travel destination.
+            From classic spots to your own private hideaways, a rental car is the key to unlocking the true island
+            experience.
+        </p>
+    </section>
+
+    <footer id="footer">
+        <div id="footer-top">
+            <img src="logo-white.png" alt="Holiday Rent-A-Car" class="footer-logo">
+            <div id="footer-info">
+                <p id="office-location"><i class="fas fa-map-marker-alt"></i> 1-2-3 Ginza, Tokyo, Japan</p>
+            </div>
+        </div>
+        <div id="copyright">
+            <p id="copyright-style">Copyright © 2026 Holiday Rent a Car Co.,Ltd</p>
+        </div>
+    </footer>
+
+    <div id="return_top">
+        <a href="#">
+            <i class="fas fa-chevron-up"></i>
+            <span>TOP</span>
+        </a>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script>
+        document.getElementById('car-search-btn').addEventListener('click', () => {
+            window.location.href = 'showroom.html';
+        });
+        
+        // Added simple booking redirect for the search form
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            window.location.href = 'showroom.html';
+        });
+    </script>
+</body>
+</html>

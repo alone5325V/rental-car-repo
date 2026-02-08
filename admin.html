@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Admin | Management Portal</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-overlay">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>HOLIDAY</h2>
+                <p>管理画面 (Admin Portal)</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" id="admin-user" placeholder="admin" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="admin-pass" placeholder="••••••" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">LOGIN</button>
+            </form>
+            <p id="login-error" class="hidden">Invalid Credentials</p>
+        </div>
+    </div>
+
+    <div id="dashboard" class="hidden">
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>HOLIDAY</h1>
+                <span>Rent-A-Car</span>
+            </div>
+            <nav class="side-nav">
+                <a href="#" class="active"><i class="fas fa-car"></i> 車両管理 (Cars)</a>
+                <a href="#" onclick="alert('Demo Feature')"><i class="fas fa-calendar-check"></i> 予約確認 (Bookings)</a>
+                <a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> サイトを見る (Live Site)</a>
+            </nav>
+            <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <h2>Vehicle Inventory</h2>
+                <div class="actions">
+                    <button id="download-json-btn" class="btn-outline">
+                        <i class="fas fa-file-download"></i> JSON保存 (Download)
+                    </button>
+                    <button id="reset-data-btn" class="btn-text">
+                        <i class="fas fa-sync"></i> Reset
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                
+                <section class="panel form-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-plus-circle"></i> 新規車両登録 (Add New Car)</h3>
+                    </div>
+                    <form id="add-car-form">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label>Car ID (Unique Key)</label>
+                                <input type="text" id="car-id" placeholder="e.g. honda_vezel" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Model Name</label>
+                                <input type="text" id="car-model" placeholder="e.g. HONDA Vezel" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Vehicle Type</label>
+                                <select id="car-type">
+                                    <option value="Compact">Compact</option>
+                                    <option value="Compact SUV">Compact SUV</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="Sedan">Sedan</option>
+                                    <option value="Minivan">Minivan</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Capacity (Persons)</label>
+                                <input type="number" id="car-capacity" value="5">
+                            </div>
+                            <div class="input-group">
+                                <label>Transmission (Mission)</label>
+                                <select id="car-mission">
+                                    <option value="AT">AT (Automatic)</option>
+                                    <option value="MT">MT (Manual)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Body Color</label>
+                                <input type="text" id="car-color" placeholder="e.g. Metallic Silver">
+                            </div>
+
+                            <div class="input-group">
+                                <label>Fuel Type</label>
+                                <input type="text" id="car-fuel" placeholder="e.g. Hioku / Petrol">
+                            </div>
+                            <div class="input-group">
+                                <label>Engine (cc)</label>
+                                <input type="text" id="car-engine" placeholder="e.g. 1197 cc">
+                            </div>
+                            <div class="input-group">
+                                <label>Dimensions (L/W/H mm)</label>
+                                <input type="text" id="car-dims" placeholder="1700/ 1765/ 1600 mm">
+                            </div>
+
+                            <div class="input-group full-span">
+                                <label>Base Daily Rate (OFF Season) - <small>Others calculated automatically</small></label>
+                                <input type="number" id="car-price" placeholder="2500" required>
+                            </div>
+
+                            <div class="input-group full-span">
+                                <label>Images (Comma separated paths)</label>
+                                <input type="text" id="car-images" placeholder="./photos/main.jpg, ./photos/side.jpg" value="./photos/">
+                            </div>
+                            
+                            <div class="input-group full-span">
+                                <label>Standard Equipment (Comma separated)</label>
+                                <textarea id="car-equipment" rows="2" placeholder="Air Conditioning, Power Steering, ABS..."></textarea>
+                            </div>
+                            
+                            <div class="input-group full-span">
+                                <label>Safety Equipment (Comma separated)</label>
+                                <textarea id="car-safety" rows="2" placeholder="Rear Parking Sensors, Hill Start Assist..."></textarea>
+                            </div>
+
+                        </div>
+                        <div class="form-footer">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-check"></i> 登録する (Register Car)
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="panel list-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-list"></i> 登録済み車両 (Current Fleet)</h3>
+                    </div>
+                    <div class="table-container">
+                        <table id="car-table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Car Info</th>
+                                    <th>Specs</th>
+                                    <th>Price (24h)</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="car-list-body">
+                                </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="./js/admin.js"></script>
+</body>
+</html>

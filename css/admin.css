@@ -1,0 +1,235 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --primary: #1A2B4C;
+    --accent: #C5A059;
+    --text-dark: #2C2C2C;
+    --text-light: #6E6E73;
+    --bg-light: #F4F6F9;
+    --white: #ffffff;
+    --danger: #d32f2f;
+    --radius: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", "Yu Gothic", sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* =========================================
+   2. LAYOUT & GRID
+   ========================================= */
+#dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background: var(--white);
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Grid for the Complex Form */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 Columns */
+    gap: 20px;
+}
+
+/* Utilities */
+.full-span {
+    grid-column: 1 / -1;
+}
+
+/* Spans all columns */
+.hidden {
+    display: none !important;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 15px;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.btn-danger {
+    background: #ffebee;
+    color: var(--danger);
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+}
+
+/* =========================================
+   3. COMPONENTS
+   ========================================= */
+.panel {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.panel-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    background: #fafafa;
+}
+
+.panel-header h3 {
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#add-car-form {
+    padding: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+}
+
+.input-group textarea {
+    resize: vertical;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th {
+    background: #f4f4f4;
+    text-align: left;
+    padding: 12px;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.car-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.model-info {
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+}
+
+.model-type {
+    font-size: 0.75rem;
+    background: #eee;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #555;
+}
+
+/* Login */
+#login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius);
+    width: 350px;
+    text-align: center;
+}
+
+.brand h1 {
+    font-family: 'Times New Roman', serif;
+    color: var(--primary);
+}
+

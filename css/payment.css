@@ -1,0 +1,143 @@
+/* Layout Grid */
+.payment-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 120px auto 60px; /* Top margin for fixed header */
+    padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+    .payment-layout {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse; /* Summary on top for mobile is standard in Japan, but bottom often easier */
+    }
+    
+    /* Make Summary appear first on mobile */
+    .order-summary { order: 1; margin-bottom: 30px; }
+    .payment-method-section { order: 2; }
+}
+
+/* Section Styling */
+.section-heading {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--primary);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Secure Badge in Header */
+.secure-badge {
+    color: var(--accent);
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Payment Tabs */
+.payment-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    color: var(--text-light);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tab-btn.active {
+    background: var(--white);
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.paypay-icon {
+    background: #FF0033;
+    color: white;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+/* Tab Content */
+.tab-content { display: none; animation: fadeIn 0.3s ease; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Credit Card Form */
+.card-logos { margin-bottom: 15px; font-size: 2rem; color: #444; display: flex; gap: 10px; }
+.stripe-input, .stripe-input-mock {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+.form-row { margin-bottom: 20px; }
+.form-row label { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
+.info-note { font-size: 0.8rem; color: #666; margin-top: 10px; display: flex; align-items: center; gap: 5px; }
+
+/* PayPay & Konbini Visuals */
+.paypay-box { text-align: center; padding: 20px; border: 1px dashed #ccc; background: #fafafa; }
+.qr-placeholder img { width: 120px; height: 120px; margin-bottom: 15px; opacity: 0.8; }
+.konbini-logos { display: flex; justify-content: space-around; font-weight: bold; color: #555; margin-bottom: 20px; }
+.konbini-logos span { background: #eee; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; }
+.konbini-text { font-size: 0.9rem; line-height: 1.6; }
+
+/* Order Summary Card */
+.summary-card {
+    background: var(--white);
+    border: 1px solid #e0e0e0;
+    border-radius: var(--radius-md);
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 100px;
+}
+
+.car-preview { text-align: center; margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
+.car-preview img { width: 80%; max-width: 250px; border-radius: 4px; }
+.car-name { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-top: 10px; }
+.car-badge { font-size: 0.75rem; color: #888; text-transform: uppercase; }
+
+.detail-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; color: #555; }
+.divider { height: 1px; background: #eee; margin: 20px 0; }
+
+.total-row { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; font-weight: bold; color: var(--primary); margin-bottom: 25px; }
+.price-jp { font-size: 1.5rem; color: #d32f2f; }
+
+.pay-now-btn {
+    width: 100%;
+    background: var(--primary);
+    color: var(--white);
+    padding: 18px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    letter-spacing: 1px;
+}
+.pay-now-btn:hover { background: #12203a; box-shadow: 0 5px 15px rgba(26, 43, 76, 0.3); }
+.cancel-policy { text-align: center; font-size: 0.75rem; color: #888; margin-top: 15px; }

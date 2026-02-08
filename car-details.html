@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Car Details - Holiday Rent-A-Car</title>
+    <link rel="stylesheet" href="./css/car-details.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="loading-overlay">Loading Car Details...</div>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    
+    <nav class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <h3>MENU</h3>
+            <button class="close-btn" id="closeMenuBtn">&times;</button>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="showroom.html"><i class="fas fa-car"></i> Lineup</a></li>
+            <li><a href="#"><i class="fas fa-tags"></i> Rates</a></li>
+            <li><a href="#"><i class="fas fa-book-open"></i> Guide</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Shops</a></li>
+        </ul>
+        <div class="drawer-footer">
+            <a href="#" class="btn-drawer">予約確認 / 変更</a>
+        </div>
+    </nav>
+
+    <header class="site-header" id="siteHeader">
+        <div class="container header-container">
+            <div class="logo"><a href="index.html"><h1>HOLIDAY</h1></a></div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="showroom.html">Lineup</a></li>
+                    <li><a href="#">Rates</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle" id="menuToggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <article class="car-detail-wrapper" id="main-content" style="opacity: 0; transition: opacity 0.5s;">
+            
+            <div class="detail-hero">
+                <img id="hero-image" src="" alt="Car Image">
+            </div>
+
+            <div class="car-title-block">
+                <span class="tag-pill" id="vehicle-type-tag">Loading...</span>
+                <h2 id="car-model">Loading...</h2>
+                <p style="color: var(--text-light);" id="car-subtitle">Loading...</p>
+            </div>
+
+            <section class="data-section">
+                <h3 class="section-heading"><i class="fas fa-yen-sign"></i> Rental Rates (Tax Inc.)</h3>
+                <div class="table-scroll-container">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Season</th>
+                                <th>Same Day</th>
+                                <th>2D 1N</th>
+                                <th>3D 2N</th>
+                                <th>3N 4D</th>
+                                <th>4N 5D</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pricing-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="data-section" id="info-section">
+                <h3 class="section-heading"><i class="fas fa-info-circle"></i> Vehicle Information</h3>
+                <div class="table-scroll-container">
+                    <table class="info-table">
+                        <tbody id="info-body">
+                           </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <div class="reservation-action-area" style="text-align: center; padding: 40px 20px;">
+    <p style="margin-bottom: 15px; color: var(--text-light);">Ready to drive this car?</p>
+    <a href="#" id="reserve-link" class="btn-reserve-main" style="display: inline-block; background: var(--primary); color: white; padding: 15px 40px; text-decoration: none;">
+        ご予約はこちら <i class="fas fa-chevron-right"></i>
+    </a>
+</div>
+
+        </article>
+    </main>
+
+    <footer id="footer">
+        <div id="footer-top">
+            <img src="logo-white.png" alt="logo" class="footer-logo">
+            <div id="footer-info">
+                <p id="office-location"><i class="fas fa-map-marker-alt"></i> 1-2-3 Ginza, Tokyo, Japan</p>
+            </div>
+        </div>
+        <div id="footer-menu">
+            <ul>
+                <li><a href="#">Lineup</a></li>
+                <li><a href="#">Rates</a></li>
+                <li><a href="#">Concept</a></li>
+                <li><a href="#">Guide</a></li>
+                <li><a href="#">Company</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div id="copyright">
+            <p id="copyright-style">Copyright © 2026 Holiday Rent a Car Co.,Ltd</p>
+        </div>
+    </footer>
+
+    <script src="./js/index.js" defer></script>
+<script src="./js/car-details.js" defer></script>
+</body>
+</html>

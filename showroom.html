@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lineup | Holiday Rent-A-Car</title>
+    <link rel="stylesheet" href="./css/index.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Showroom Specific Header Background */
+        .showroom-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./photos/showroom_background.jpeg') center/cover;
+            /* Fallback if image missing */
+            background-color: #1A2B4C; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .showroom-hero h2 {
+            font-family: 'Times New Roman', serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <h3>MENU</h3>
+            <button class="close-btn" id="closeMenuBtn">&times;</button>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="showroom.html"><i class="fas fa-car"></i> 車種一覧 (Lineup)</a></li>
+            <li><a href="#"><i class="fas fa-tags"></i> 料金プラン (Rates)</a></li>
+        </ul>
+    </nav>
+
+    <header class="site-header" id="siteHeader">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html"><h1>HOLIDAY</h1></a>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="showroom.html">Lineup</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle" id="menuToggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="showroom-hero">
+        <div>
+            <h2>PREMIUM LINEUP</h2>
+            <p>取り扱い車種一覧</p>
+        </div>
+    </div>
+
+    <main>
+        <div class="container" style="text-align:center; margin-bottom:20px; color:var(--text-light);">
+            <p><span id="total-cars">0</span> 台の車両が見つかりました</p>
+        </div>
+
+        <div id="showroom-container" class="showroom-grid">
+            <div id="loading-spinner" style="width:100%; text-align:center; grid-column: 1/-1;">
+                <i class="fas fa-circle-notch fa-spin fa-2x" style="color:var(--primary);"></i>
+            </div>
+        </div>
+
+        <div class="pagination-container" id="pagination-controls">
+            </div>
+    </main>
+
+    <footer id="footer">
+        <div id="footer-top">
+            <img src="logo-white.png" alt="logo" class="footer-logo">
+            <div id="footer-info">
+                <p id="office-location"><i class="fas fa-map-marker-alt"></i> 1-2-3 Ginza, Tokyo, Japan</p>
+            </div>
+        </div>
+        <div id="footer-menu">
+            <ul>
+                <li><a href="#">Lineup</a></li>
+                <li><a href="#">Rates</a></li>
+                <li><a href="#">Guide</a></li>
+                <li><a href="#">Company</a></li>
+            </ul>
+        </div>
+        <div id="copyright">
+            <p id="copyright-style">Copyright © 2026 Holiday Rent a Car Co.,Ltd</p>
+        </div>
+    </footer>
+
+    <div id="return_top">
+        <a href="#">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/showroom.js"></script>
+    
+</body>
+</html>

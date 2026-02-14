@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lineup | Holiday Rent-A-Car</title>
@@ -8,11 +9,9 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Showroom Specific Header Background */
         .showroom-hero {
             height: 40vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./photos/showroom_background.jpeg') center/cover;
-            /* Fallback if image missing */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./photos/background-image/showroom-background-image.jpg') center/cover;
             background-color: #1A2B4C; 
             display: flex;
             align-items: center;

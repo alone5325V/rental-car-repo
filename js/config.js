@@ -1,0 +1,4 @@
+// config.js or top of your script files
+const supabaseUrl = 'https://kshpzepziymekpfyvpyr.supabase.co'; 
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzaHB6ZXB6aXltZWtwZnl2cHlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5Njg4NjksImV4cCI6MjA4NjU0NDg2OX0.cf-HVfuRL18v9cdroBPamF6YQxAEaKYQ4aLDxrkvk7o';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);

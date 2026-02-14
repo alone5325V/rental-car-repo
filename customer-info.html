@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Customer Info | Holiday Rent-A-Car</title>
@@ -146,62 +147,8 @@
         </form>
     </main>
 
+    <script src="./js/config.js"></script>
     <script src="./js/index.js"></script>
-    <script>
-        // --- License Toggle ---
-        function toggleLicense(type) {
-            document.querySelectorAll('[id^="license-warning"]').forEach(el => el.classList.remove('active'));
-            if(type === 'IDP') document.getElementById('license-warning-idp').classList.add('active');
-            if(type === 'JAF') document.getElementById('license-warning-jaf').classList.add('active');
-        }
-
-        // --- Safety Check ---
-        function checkFormValidity() {
-            const chk1 = document.getElementById('chk_license').checked;
-            const chk2 = document.getElementById('chk_terms').checked;
-            document.getElementById('submitBtn').disabled = !(chk1 && chk2);
-        }
-
-        // --- Form Submission ---
-        document.getElementById('customerForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // In a real app, collect data here
-            alert("Reservation Info Saved!\nRedirecting to Payment...");
-            // window.location.href = 'payment.html'; 
-        });
-
-        function toggleLicense(type) {
-            document.querySelectorAll('[id^="license-warning"]').forEach(el => el.classList.remove('active'));
-            if(type === 'IDP') document.getElementById('license-warning-idp').classList.add('active');
-            if(type === 'JAF') document.getElementById('license-warning-jaf').classList.add('active');
-        }
-
-        // --- Safety Check ---
-        function checkFormValidity() {
-            const chk1 = document.getElementById('chk_license').checked;
-            const chk2 = document.getElementById('chk_terms').checked;
-            document.getElementById('submitBtn').disabled = !(chk1 && chk2);
-        }
-
-        // --- Form Submission & Integration ---
-        document.getElementById('customerForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // 1. Capture the Name
-            const driverName = document.querySelector('input[name="name_en"]').value;
-            
-            // 2. Save to LocalStorage (Simulates passing data to next step)
-            localStorage.setItem('driverName', driverName);
-
-            // 3. Visual Feedback
-            const btn = document.getElementById('submitBtn');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-            // 4. Redirect to Payment Page
-            setTimeout(() => {
-                window.location.href = 'payment.html';
-            }, 800);
-        });
-    </script>
+    <script src="./js/customer-info.js"></script>
 </body>
 </html>
